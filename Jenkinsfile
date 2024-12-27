@@ -31,8 +31,19 @@ pipeline {
     }
 
     stage('end') {
-      steps {
-        echo 'end'
+      parallel {
+        stage('end') {
+          steps {
+            echo 'end'
+          }
+        }
+
+        stage('deploy') {
+          steps {
+            echo 'hello'
+          }
+        }
+
       }
     }
 
